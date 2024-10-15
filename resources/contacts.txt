@@ -1,4 +1,4 @@
-Helland, Emil, emil@gmail.com
-Espelid, Robert, robert@gmail.com
-Ruyter, Oskar, oskar@gmail.com
-Magomedov, Hasbullah, hasbullah@gmail.com
+Emil, emil@gmail.com, 10:00
+Robert, robert@gmail.com, 09:00
+Oskar, oskar@gmail.com, 08:00
+Hasbullah, hasbullah@gmail.com, 11:00
