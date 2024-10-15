@@ -1,4 +1,4 @@
-Emil, emil@gmail.com, 10:00
-Robert, robert@gmail.com, 09:00
-Oskar, oskar@gmail.com, 08:00
-Hasbullah, hasbullah@gmail.com, 11:00
+emil, emil@gmail.com, 10:00
+robert, robert@gmail.com, 09:00
+oskar, oskar@gmail.com, 08:00
+hasbullah, hasbullah@gmail.com, 11:00

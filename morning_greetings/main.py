@@ -1,37 +1,39 @@
-import morning_greetings
-from setuptools import find_packages
-import sys
 import os
+import sys
 
-from morning_greetings import io_manager
 from morning_greetings.contact_manager import ContactsManager
 from morning_greetings.logger import log_message_2
 from morning_greetings.message_generator import generate_message
 from morning_greetings.message_sender import send_message
 
 # Ensure the parent directory is in the Python path
+# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 
 def main():
-    contacts_path = os.path.join('resources', 'contacts.txt')
-    logs_path = os.path.join('resources', 'message_logs.txt')
-    print(contacts_path)
-
-    ### get contacts from file
-    contacts = io_manager.read_contacts_from_file(contacts_path)
-    print(contacts)
-    name = ContactsManager.get_contact_attribute(contacts[0], "name")
-    email = ContactsManager.get_contact_attribute(contacts[0], "email")
-    preferred_time = ContactsManager.get_contact_attribute(contacts[0], "preferred_time")
+    ### get contacts
+    cm = ContactsManager()
+    cm.populate_contacts()
+    print(cm.contacts)
+    cm.remove_contact("Emil")
+    print("after removing emil")
+    print(cm.contacts)
+    cm.list_contacts()
+    name = cm.get_contact_attribute(cm.contacts[0], "name")
+    print(name)
+    email = cm.get_contact_attribute(cm.contacts[0], "email")
+    preferred_time = cm.get_contact_attribute(cm.contacts[0], "preferred_time")
     print(name, email, preferred_time)
+
     ### generate messages
     message = generate_message(name)
     print(message)
     ### send messages
     send_message(email, message)
     ### logging
-    log_message_2(contacts[0], message, logs_path)
+    log_message_2(cm.contacts[0], message)
 
 
 if __name__ == "__main__":
