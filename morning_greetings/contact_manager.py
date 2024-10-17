@@ -18,7 +18,7 @@ class ContactsManager:
 
     def populate_contacts(self):
         # populates the self.contacts[] list from the contents of resources/contacts.txt
-        # un-comment the contacts_from_file = [] line to force error
+        # un-comment the contacts_from_file = [] line to force error for manual testing
         contacts_from_file = read_contacts_from_file()
         # contacts_from_file = []
         if not contacts_from_file:
@@ -46,8 +46,11 @@ class ContactsManager:
         }
         self.contacts.append(contact)
 
-    def remove_contact(self, name):
+    def remove_contact_by_name(self, name):
         self.contacts = [c for c in self.contacts if c['name'] != name.lower()]
+
+    def remove_contact_by_email(self, email):
+        self.contacts = [c for c in self.contacts if c['email'] != email.lower()]
 
     def get_contacts(self):
         return self.contacts
