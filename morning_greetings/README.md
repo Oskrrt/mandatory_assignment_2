@@ -9,11 +9,14 @@ Python code for the second mandatory assignment for subject "problem-solving wit
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
+- [Things I did not have time for](#future-work)
 
 ## Important
 
-The **CONTACTS_FILE_PATH** and **LOGS_FILE_PATH** variables in **io_manager.py** seem to work differently on my
-laptop and my home computer. You might need to adjust this path variable to work on your system.
+- The structure and some of the content of this readme file are copied from the readme in
+  **ACIT_GAME_MODULE** example.
+- ***setup.py*** and ***pyproject.toml*** is also taken from ACIT_GAME_MODULE. Edited setup.py according to this
+  package.
 
 ## Features
 
@@ -51,3 +54,12 @@ To get started, follow these steps:
 
 ## Usage
 
+## Future work
+
+***Things I planned on doing but did not have time for:***
+
+- Unit testing.
+- More in depth error handling with logging of error messages to file.
+- Regex validation on name, email and preferred_time, especially when adding contacts.
+- Some form of user interface popup for contact management
+- 

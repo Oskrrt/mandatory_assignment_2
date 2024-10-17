@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+# Taken from ACIT_GAME_MODULE -> setup.py
 setup(
     name="morning_greetings",  # The package name
     version="0.1",

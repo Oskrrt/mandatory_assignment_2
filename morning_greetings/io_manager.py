@@ -1,33 +1,34 @@
 import datetime
 import os
+from os import getcwd
 
-# For some reason this path seems to work differently on my home computer
-# and my laptop, even though it is cloned the same way, and the file
-# structure is the same. The commented out line is the correct one for my home
-# computer, while the other is correct for my laptop. Adjust this accordingly.
-
-# CONTACTS_FILE_PATH = os.path.join('resources', 'contacts.txt')
-CONTACTS_FILE_PATH = os.path.join('..', 'resources', 'contacts.txt')
-LOGS_FILE_PATH = os.path.join('..', 'resources', 'message_logs.txt')
+CONTACTS_FILE_PATH = os.path.join('morning_greetings', 'resources', 'contacts.txt')
+LOGS_FILE_PATH = os.path.join('morning_greetings', 'resources', 'message_logs.txt')
 
 
-def log_message_to_file(contact, message, file_name):
-    try:
-        with open(file_name, "a") as log_file:
-            log_file.write(f"{datetime.datetime.now()} - Sent to {contact['name']}: {message}\n")
-    except FileNotFoundError as e:
-        print("File not found: " + e.filename)
-
-
-def log_message_to_file_2(contact, message):
+def log_message_sent_to_file(contact, message):
+    # logs the message sending event to resources/message_logs.txt
     try:
         with open(LOGS_FILE_PATH, "a") as log_file:
-            log_file.write(f"{datetime.datetime.now()} - Sent to {contact['name']}: {message}\n")
+            log_file.write(f"{datetime.datetime.now()} - Message sent to {contact['name']}: {message}\n")
     except FileNotFoundError as e:
         print("File not found: " + e.filename)
+        raise e
+
+
+def log_message_generated_to_file(contact, message):
+    # logs the message generation event to resources/message_logs.txt
+    try:
+        with open(LOGS_FILE_PATH, "a") as log_file:
+            log_file.write(f"{datetime.datetime.now()} - Message generated for {contact['name']}: {message}\n")
+    except FileNotFoundError as e:
+        print("File not found: " + e.filename)
+        raise e
 
 
 def read_contacts_from_file():
+    # reads all contacts from resources/contacts.txt
+    # returns a list of the contacts found
     try:
         with open(CONTACTS_FILE_PATH, "r") as contact_file:
             lines = [line.rstrip() for line in contact_file]
@@ -36,16 +37,17 @@ def read_contacts_from_file():
         print("File not found: " + e.filename)
 
 
-def write_contact_to_file():
+def write_contact_to_file(contact):
+    # Appends the contact to resources/contacts.txt
     try:
         with open(CONTACTS_FILE_PATH, "a") as contact_file:
-            lines = [line.rstrip() for line in contact_file]
-        return lines
+            contact_file.write(f"{contact['name']}, {contact['email']}, {contact['preferred_time']}\n")
     except FileNotFoundError as e:
         print("File not found: " + e.filename)
 
 
 def remove_contact_from_file():
+    # Removes the contact from resources/contacts.txt
     try:
         with open(CONTACTS_FILE_PATH, "r+") as contact_file:
             d = contact_file.readlines()

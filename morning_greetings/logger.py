@@ -1,10 +1,17 @@
-from io_manager import log_message_to_file, log_message_to_file_2
+from io_manager import log_message_generated_to_file, log_message_sent_to_file
 
 
-def log_message(contact, message, file_name):
-    log_message_to_file(contact, message, file_name)
+def log_message_sent(contact, message):
+    try:
+        log_message_sent_to_file(contact, message)
+        print("Message sending event logged")
+    except FileNotFoundError as e:
+        print("Could not log message sending event")
 
 
-def log_message_2(contact, message):
-    log_message_to_file_2(contact, message)
-    print("Message logged")
+def log_message_generated(contact, message):
+    try:
+        log_message_generated_to_file(contact, message)
+        print("Message generation event logged")
+    except FileNotFoundError as e:
+        print("Could not log message generation event")
