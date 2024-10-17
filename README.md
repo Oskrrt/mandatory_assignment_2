@@ -57,7 +57,7 @@ To get started, follow these steps:
 
 ## Usage
 
-Once installed, you can play the games by running the following command in your terminal:
+Once installed, you can run the automation by running the following command in your terminal:
 
 ```bash
 morning_greetings
@@ -81,8 +81,8 @@ mandatory_assignment_2/
 │   └── message_sender.py
 │   └── message_sender.py
 │   └── pyproject.toml
-│   └── readme.md               # Project documentation (this file)
-└── .gitignore                
+├── .gitignore                
+└── readme.md               # Project documentation (this file)
 ```
 
 ## Future work
